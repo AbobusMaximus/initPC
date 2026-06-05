@@ -63,7 +63,7 @@ if [ ! -d ~/.dotfiles ]; then
     # TODO - is this idempotent?
     echo ".dotfiles" > ~/.gitignore
     # echo "*" > ~/.gitignore  # secure option
-    git clone --bare https://github.com/jan-revay/dotfiles.git "${HOME}/.dotfiles"
+    git clone --bare https://github.com/AbobusMaximus/dotfiles.git "${HOME}/.dotfiles"
 fi
 
 checkout_dotfiles
