@@ -20,7 +20,7 @@ function interactive_part
         # does not work without it. The noninteractive version does not set user for
         # some reason (probably a bug TODO report it).
         # TODO - only echo if user is not already set
-        echo "    user: jan-revay" >> ~/.config/gh/hosts.yml
+        echo "    user: AbobusMaximus" >> ~/.config/gh/hosts.yml
         gh auth setup-git
     fi
 }
