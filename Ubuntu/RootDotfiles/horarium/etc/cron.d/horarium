@@ -1,60 +1,62 @@
-# I plan my day and week using time-blocking method. I use cron to enforce my
-# time block boundaries and breaks as most of my work is being done on PC and
-# phone (I use sth. similar on my phone).
-#
-# Advantages as opposed to only using alarms on phone:
-#   1. I don't have to think about my schedule and manage alarms.
-#   2. Alarms may go unnoticed (e.g. if my phone is in a different room or out
-#   of battery).
-#   3. There is no postpone button. I don't waste my willpower to keep my
-#   time-blocks sharp.
-#   4. I can always leave my PC on when I go away (it will turn off itself
-#   eventually).
-#   5. Easier context switches between morning and evening time blocks and
-#   cleaner PC desktop.
-#   6. It is less likely that my attention gets stolen/grabbed by a low
-#   priority engaging or urgent task as the time-block boundary/break helps me
-#   to reevaluate my priorities for the day resp. "unfocus", so that I am able
-#   to do a calm prioritization.
-#
-# Disadvantages of managing my daily schedule this way:
-#   1. ONLINE CALLS need to fit time-block boundaries! Having my screen locked
-#   or PC turned off in the middle of an online call is annoying, but this is
-#   also a blessing in disguise as I am forced to schedule my online calls to
-#   fit my time-blocks, not the other way around.
-#
-#   Note: shutdown command uses a default "+1m" delay, hence if I am caught off
-#   guard, I can return by turning my PC on back again and 1m is just enough
-#   time to finish what I was doing.
+# Time-blocking system (simplified version)
 
+# Focus: minimal interruptions, single daily cutoff, no forced mid-day breaks
 
-*      0-6    * * *  root /sbin/shutdown
+# ------------------------------------------------------------
 
-# --- 7 - 9 Time block 0 (phone on for 10 min) ---
+# Night protection: prevent PC usage during sleep hours
 
-50-59   8      * * *  root /usr/bin/loginctl lock-sessions
+# ------------------------------------------------------------
 
-# --- 9 - 12 Time block 1 (phone off) ---
+# Ensures system is not used during late night / sleep window
 
-# --- Sext, lunch and walk (phone on) ---
-*      12     * * *  root /sbin/shutdown
+0 0-6 * * * root /sbin/shutdown
 
-# --- 13 - 15 Time block 2 (phone off) ---
+# ------------------------------------------------------------
 
-15,17  15     * * *  root /usr/bin/loginctl lock-sessions
+# Daily end of work: 21:30 shutdown
 
-# --- 15:30 - 17:40 Time block 3 (phone off) ---
+# ------------------------------------------------------------
 
-# 17:40 - alarm on phone - supper
+# Main discipline rule: end of productive day
 
-# --- 18:00 - 20:00 Bonus time block (optional, phone on)
+30 21 * * * root /sbin/shutdown
 
-*      20-23  * * *  root /sbin/shutdown
+# ------------------------------------------------------------
 
+# Weekend rule (optional but consistent cutoff)
 
-# === WEEKLY SCHEDULE ===
-# Saturday
-*      18-20  * * Sat  root /sbin/shutdown
-# Sunday - rest/sport
-*      12-20  * * Sun  root /sbin/shutdown
+# ------------------------------------------------------------
 
+# Keeps rhythm stable across week; removes "infinite weekend usage"
+
+30 21 * * Sat root /sbin/shutdown
+30 21 * * Sun root /sbin/shutdown
+
+# ------------------------------------------------------------
+
+# Optional safety layer (soft enforcement instead of instant shutdown)
+
+# ------------------------------------------------------------
+
+# Locks session shortly before shutdown (gives warning effect)
+
+25 21 * * * root /usr/bin/loginctl lock-sessions
+
+# ------------------------------------------------------------
+
+# Notes:
+
+# - Removed all lunch / mid-day shutdown blocks
+
+# - Removed phone-related logic entirely
+
+# - Removed fragmented time-block enforcement (simplified to one anchor point)
+
+# - System now relies on:
+
+# 1) Night cutoff (sleep protection)
+
+# 2) Single daily shutdown (discipline boundary)
+
+# 3) Optional lock warning (transition buffer)
