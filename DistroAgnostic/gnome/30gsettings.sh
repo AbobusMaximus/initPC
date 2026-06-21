@@ -79,8 +79,8 @@ for_each "gsettings set org.gnome.desktop.interface " << 'BASH'
 
     enable-animations "false"
 
+    #Dark mode and red system layout
     color-scheme "prefer-dark"
     gtk-theme "Yaru-red-dark"
     icon-theme "Yaru-red-dark"
 BASH
-
