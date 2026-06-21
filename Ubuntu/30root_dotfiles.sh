@@ -17,14 +17,6 @@ clean()
     # Delete links to files created by this script
     sudo rm -f "${TO_CLEAN[@]}"
     # Backup old logid.cfg
-    # TODO change this to make script work: the MX3_MASTER_LOGID_CONFIG/ stow
-    # package does not exist in RootDotfiles/, so `stow` errors -> the `if !`
-    # branch runs `mv /etc/logid.cfg` -> that file usually does not exist either
-    # -> `mv` fails -> `set -euo pipefail` (prelude.sh) kills the whole script.
-    # Delete this whole if-block to run without the MX3 mouse config.
-    if ! stow -vvv --no --target=/ MX3_MASTER_LOGID_CONFIG/; then
-        sudo mv /etc/logid.cfg /etc/logid.cfg-initPCBackup"$(date '+%Y%m%d_%H%M%S')"
-    fi
 }
 
 cron_permissions()
