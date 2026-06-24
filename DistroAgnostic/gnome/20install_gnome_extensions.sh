@@ -92,6 +92,7 @@ for_each "install_gnome_extension " << 'BASH'
     "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
     "workspaces-by-open-apps@favo02.github.com"
     "hide-universal-access@akiirui.github.io"
+    "hidetopbar@mathieu.bidon.ca"
 BASH
 
 # TODO do some research and testing wrt windows navigator extension and
