@@ -84,3 +84,14 @@ for_each "gsettings set org.gnome.desktop.interface " << 'BASH'
     gtk-theme "Yaru-red-dark"
     icon-theme "Yaru-red-dark"
 BASH
+
+for_each "gsettings set org.gnome.desktop.session " << 'BASH'
+    idle-delay 600
+BASH
+
+for_each "gsettings set org.gnome.settings-daemon.plugins.power " << 'BASH'
+    ambient-enabled "false"
+    idle-dim "false"
+    sleep-inactive-ac-timeout "3600"
+    sleep-inactive-battery-timeout "1800"
+BASH
