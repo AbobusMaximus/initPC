@@ -71,6 +71,7 @@ export -f install_gnome_extension
 for_each "install_gnome_extension " << 'BASH'
     "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
     "apps-menu@gnome-shell-extensions.gcampax.github.com"
+    "caffeine@patapon.info"
     "clipboard-history@alexsaveau.dev"
     "focus-changer@heartmire"
     "focus@scaryrawr.github.io"
