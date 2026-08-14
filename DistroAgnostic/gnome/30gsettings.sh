@@ -22,7 +22,7 @@ gsettings set org.gnome.desktop.session idle-delay "0"
 for_each "gsettings set org.gnome.desktop.peripherals.touchpad " << 'BASH'
     click-method "fingers"
     disable-while-typing "true"
-    send-events "disabled"
+    send-events "disabled-on-external-mouse"
 BASH
 
 for_each "gsettings set org.gnome.desktop.wm.preferences " << 'BASH'
